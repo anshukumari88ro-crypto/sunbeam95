@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Corner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Book Corner</h1>
+        <p>A little place for every book lover.</p>
+        <em>Perfect day starts with a perfect book</em></p>
+    
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="search-section">
+            <input type="text" id="searchInput" placeholder="Search for a book name..." onkeyup="searchBooks()">
+        </section>
+
+        <section class="featured-book">
+            <h2>Featured Book</h2>
+            <div class="book-card">
+                <div class="book-details">
+                    <h3>The Spanish Love Deception</h3>
+                    <p><strong>Author:</strong> Elena Armas</p>
+                    <p><strong>Genre:</strong> Romance</p>
+                    <p>Catalina Martín desperately needs a date for her sister's wedding. Enter Aaron Blackford.</p>
+                    <button class="btn" onclick="alert('Enjoy reading The Spanish Love Deception!')">Read More</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="categories">
+            <h2>Explore Categories & Books</h2>
+            
+            <div class="category-tags">
+                <span class="tag" onclick="filterCategory('all')">All</span>
+                <span class="tag" onclick="filterCategory('Romance')">Romance</span>
+                <span class="tag" onclick="filterCategory('Fantasy')">Fantasy</span>
+                <span class="tag" onclick="filterCategory('Mystery')">Mystery</span>
+                <span class="tag" onclick="filterCategory('Adventure')">Adventure</span>
+                <span class="tag" onclick="filterCategory('Horror')">Horror</span>
+                <span class="tag" onclick="filterCategory('Fiction')">Fiction</span>
+                <span class="tag" onclick="filterCategory('Non-Fiction')">Non-Fiction</span>
+            </div>
+
+            <div class="category-group" data-category="Romance">
+                <h3>Romance</h3>
+                <p>1. <strong>The Spanish Love Deception</strong> by Elena Armas</p>
+                <p>2. <strong>Book Lovers</strong> by Emily Henry</p>
+            </div>
+
+            <div class="category-group" data-category="Fantasy">
+                <h3>Fantasy</h3>
+                <p>1. <strong>Harry Potter</strong> by J.K. Rowling</p>
+                <p>2. <strong>Percy Jackson</strong> by Rick Riordan</p>
+            </div>
+
+            <div class="category-group" data-category="Mystery">
+                <h3>Mystery</h3>
+                <p>1. <strong>The Maid</strong> by Nita Prose</p>
+                <p>2. <strong>A Good Girl's Guide to Murder</strong> by Holly Jackson</p>
+            </div>
+
+            <div class="category-group" data-category="Adventure">
+                <h3>Adventure</h3>
+                <p>1. <strong>Treasure Island</strong> by Robert Louis Stevenson</p>
+                <p>2. <strong>Life of Pi</strong> by Yann Martel</p>
+            </div>
+
+            <div class="category-group" data-category="Horror">
+                <h3>Horror</h3>
+                <p>1. <strong>Dracula</strong> by Bram Stoker</p>
+                <p>2. <strong>Bird Box</strong> by Josh Malerman</p>
+            </div>
+
+            <div class="category-group" data-category="Fiction">
+                <h3>Fiction</h3>
+                <p>1. <strong>The Alchemist</strong> by Paulo Coelho</p>
+                <p>2. <strong>The Kite Runner</strong> by Khaled Hosseini</p>
+            </div>
+
+            <div class="category-group" data-category="Non-Fiction">
+                <h3>Non-Fiction</h3>
+                <p>1. <strong>Atomic Habits</strong> by James Clear</p>
+                <p>2. <strong>Educated</strong> by Tara Westover</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function filterCategory(category) {
+            let groups = document.querySelectorAll('.category-group');
+            groups.forEach(group => {
+                if (category === 'all' || group.getAttribute('data-category') === category) {
+                    group.style.display = 'block';
+                } else {
+                    group.style.display = 'none';
+                }
+            });
+        }
+
+        function searchBooks() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let groups = document.querySelectorAll('.category-group');
+            groups.forEach(group => {
+                let text = group.innerText.toLowerCase();
+                if (text.includes(input)) {
+                    group.style.display = 'block';
+                } else {
+                    group.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
